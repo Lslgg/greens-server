@@ -1,0 +1,42 @@
+# 广告
+type Images {
+   id:ID          
+   Images: [File]
+   type:String
+   desc:String   
+   updateAt:Date
+   createAt:Date
+}
+
+extend type Query{
+    # 查询所有广告
+    getImages:[Images]
+    # 根据ID查找广告
+    getImagesById(id:String):Images
+    # 分页查找
+    getImagesPage(pageIndex: Int, pageSize: Int,images:searchImages): [Images]
+    # 查找分页总数
+    getImagesCount(images:searchImages):Int
+    # 根据条件查找
+    getImagesWhere(images:searchImages): [Images]    
+}
+
+extend type Mutation{
+    # 添加修改广告
+    saveImages(images:inputImages):Images
+    # 删除广告
+    deleteImages(id:String):Boolean
+}
+
+input inputImages { 
+   id:String   
+   imageIds: [String]
+   type:String
+   desc:String         
+}
+
+input searchImages{
+    id:Json
+    desc:Json
+    type:Json
+}

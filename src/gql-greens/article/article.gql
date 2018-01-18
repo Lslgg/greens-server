@@ -1,0 +1,46 @@
+# 广告
+type Article {
+   id:ID          
+   Images: [File]
+   type:String
+   desc:String 
+   content:String  
+   isValid:Boolean
+   updateAt:Date
+   createAt:Date
+}
+
+extend type Query{
+    # 查询所有广告
+    getArticle:[Article]
+    # 根据ID查找广告
+    getArticleById(id:String):Article
+    # 分页查找
+    getArticlePage(pageIndex: Int, pageSize: Int,article:searchArticle): [Article]
+    # 查找分页总数
+    getArticleCount(article:searchArticle):Int
+    # 根据条件查找
+    getArticleWhere(article:searchArticle): [Article]    
+}
+
+extend type Mutation{
+    # 添加修改广告
+    saveArticle(article:inputArticle):Article
+    # 删除广告
+    deleteArticle(id:String):Boolean
+}
+
+input inputArticle{ 
+   id:String   
+   imageIds: [String]
+   type:String
+   desc:String
+   content:String  
+   isValid:Boolean         
+}
+
+input searchArticle{
+    id:Json
+    desc:Json
+    type:Json
+}

@@ -1,6 +1,7 @@
 # 商家
 type Business {
    id:ID   
+   User:User
    name:String
    phone_num:String
    address:String

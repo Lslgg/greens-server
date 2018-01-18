@@ -7,7 +7,6 @@ export class Business{
     }
 
     static Business: any = {
-
         User(model) {            
             return UserSchema.findById(model.user_id);
         },        

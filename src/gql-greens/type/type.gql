@@ -1,0 +1,43 @@
+# 广告
+type Type {
+   id:ID          
+   key:String
+   value:String
+   type:String
+   updateAt:Date
+   createAt:Date
+}
+
+extend type Query{
+    # 查询所有广告
+    getType:[Type]
+    # 根据ID查找广告
+    getTypeById(id:String):Type
+    # 分页查找
+    getTypePage(pageIndex: Int, pageSize: Int,type:searchType): [Type]
+    # 查找分页总数
+    getTypeCount(type:searchType):Int
+    # 根据条件查找
+    getTypeWhere(type:searchType): [Type]    
+}
+
+extend type Mutation{
+    # 添加修改广告
+    saveType(type:inputType):Type
+    # 删除广告
+    deleteType(id:String):Boolean
+}
+
+input inputType{ 
+   id:String          
+   key:String
+   value:String
+   type:String        
+}
+
+input searchType{
+    id:Json
+    key:Json
+    value:Json
+    type:Json
+}

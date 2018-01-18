@@ -33,7 +33,7 @@ class Server {
 		this.app.use("/uploads", express.static(path.join(__dirname, '../uploads')));
 		
 		//设置mongodb连接
-		const MONGO_URI = 'mongodb://localhost/webSite';
+		const MONGO_URI = 'mongodb://localhost/LCWebSite';
 		Mongoose.connect(MONGO_URI || process.env.MONGO_URI, { useMongoClient: true });
 		this.app.use(bodyParser.urlencoded({ extended: false }));
 		this.app.use(bodyParser.json());
