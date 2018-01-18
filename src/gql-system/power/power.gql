@@ -1,0 +1,71 @@
+# 系统权限表
+type Power {
+	id: ID
+	# 标题
+	title: String
+	# 操作权限
+	operation: [Operation]
+	code: String
+	url: String
+	explain: String
+	type: String
+	menuId:String
+	Menu: Menu
+	isValid: Boolean
+	updateAt: Date
+	createAt: Date
+}
+
+enum Operation {
+	SHOW
+	ADD
+	UPDATE
+	DELETE
+}
+
+extend type Query {
+	# 查找所有权限
+	getPowers: [Power]
+	# 根据ID查找权限
+	getPowerById(id: String): Power
+	# 分页查找权限
+	getPowerPage(pageIndex: Int, pageSize: Int, power: searchPower): [Power]
+	# 根据条件查找权限总数
+	getPowerCount(power: searchPower): Int
+	# 根据条件查找权限
+	getPowerWhere(power: searchPower): [Power]
+}
+
+extend type Mutation {
+	# 创建权限|修改权限
+	savePower(power: inputPower): Power
+	# 删除权限
+	deletePower(id: String): Boolean
+	# 批量添加权限
+	addAllPower(power:[inputPower]):[Power]
+	# 批量根据条件删除
+	delAllPower(power:searchPower):Boolean
+}
+
+input inputPower {
+	id:String
+	# 标题
+	title: String
+	# 操作权限
+	operation: [Operation]
+	code: String
+	url: String
+	explain: String
+	menuId:String
+	type: String
+	isValid: Boolean
+}
+
+input searchPower {
+	_id:Json
+	title: RegExp
+	code: RegExp
+	url: RegExp
+	type: RegExp
+	isValid: Boolean
+}

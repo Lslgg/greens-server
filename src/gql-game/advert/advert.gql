@@ -1,0 +1,71 @@
+# 广告管理表
+type Advert {
+	id: ID
+	# 标题
+	title: String
+	# 广告图片
+	Images: [File]
+	# 活动开始时间
+	startDate: Date
+	# 活动对结束时间
+	endDate: Date
+	# 说明String
+	explain: String
+	# 活动状态
+	activity: Int
+	# 活动类型
+	type: String
+	isValid: Boolean
+	updateAt: Date
+	createAt: Date
+}
+
+extend type Query {
+	# 查找所有权限
+	getAdverts: [Advert]
+	# 根据ID查找权限
+	getAdvertById(id: String): Advert
+	# 分页查找权限
+	getAdvertPage(pageIndex: Int, pageSize: Int, advert: searchAdvert): [Advert]
+	# 根据条件查找权限总数
+	getAdvertCount(advert: searchAdvert): Int
+	# 根据条件查找权限
+	getAdvertWhere(advert: searchAdvert): [Advert]
+}
+
+extend type Mutation {
+	# 创建活动|修改活动
+	saveAdvert(advert: inputAdvert): Advert
+	# 删除活动
+	deleteAdvert(id: String): Boolean
+}
+
+input inputAdvert {
+	id:String
+	# 标题
+	title: String
+	# 文件id列表
+	imageIds: [String]
+	# 活动开始时间
+	startDate: Date
+	# 活动对结束时间
+	endDate: Date
+	# 说明
+	explain: String
+	# 活动状态
+	activity: Int
+	# 活动类型
+	type: String
+	# 是否有效
+	isValid: Boolean
+}
+
+input searchAdvert {
+	title: RegExp
+	# 活动类型
+	type: String
+	# 活动开始时间
+	startDate: Date
+	# 活动对结束时间
+	endDate: Date
+}

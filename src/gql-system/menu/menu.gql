@@ -1,0 +1,58 @@
+# 系统菜单表
+type Menu{
+    id:ID 
+    # 标题
+    title:String
+    # 图标ico
+    menuImg:String
+    # 是否子节点
+    isLeaf:Boolean
+    pid:String
+    code:String
+    url:String
+    isValid:Boolean
+    updateAt:Date
+    createAt:Date
+}
+
+extend type Query{
+    # 查找所有菜单
+    getMenus:[Menu]
+    # 根据ID查找菜单
+    getMenuById(id:String):Menu
+    # 分页查找菜单
+    getMenuPage(pageIndex:Int,pageSize:Int,menu:searchMenu):[Menu]
+    # 根据条件查找菜单总数
+    getMenuCount(menu:searchMenu):Int
+    # 根据条件查找菜单
+    getMenuWhere(menu:searchMenu):[Menu]
+}
+
+extend type Mutation {
+    # 创建菜单|修改菜单
+    saveMenu(menu:inputMenu):Menu
+    # 
+    updateMenu(id:String,menu:inputMenu):Menu
+    # 删除菜单
+    deleteMenu(id:String):Boolean
+}
+
+input inputMenu{
+    id:String
+    menuImg:String
+    isLeaf:Boolean
+    pid:String
+    code:String
+    url:String
+    isValid:Boolean
+    title:String
+}
+
+
+input searchMenu{
+    title:RegExp
+    pid:String
+    code:Json
+    url:Json
+    isValid:Boolean
+}
