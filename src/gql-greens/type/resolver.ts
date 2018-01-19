@@ -7,15 +7,15 @@ export class Type {
     }
 
     static Images: any = {
-		Images(model) {
-			let promise = new Promise<Array<any>>((resolve, reject) => {
-				let fm = new FileManager();
-				let imgs = fm.getFileByIds(model.imageIds);
-				resolve(imgs);
-			});
-			return promise;
-		}
-	};
+        Images(model) {
+            let promise = new Promise<Array<any>>((resolve, reject) => {
+                let fm = new FileManager();
+                let imgs = fm.getFileByIds(model.imageIds);
+                resolve(imgs);
+            });
+            return promise;
+        }
+    };
 
     static Query: any = {
         getType(parent, { }, context): Promise<Array<ITypeModel>> {
@@ -62,6 +62,7 @@ export class Type {
     static Mutation: any = {
         saveType(parent, { type }, context) {
             if (!context.user) return null;
+            type.value = type.key;
             if (type.id && type.id != "0") {
                 return new Promise<ITypeModel>((resolve, reject) => {
                     TypeSchema.findByIdAndUpdate(type.id, type, (err, res) => {
@@ -70,6 +71,7 @@ export class Type {
                     })
                 });
             }
+
             return TypeSchema.create(type);
         },
         deleteType(parent, { id }, context): Promise<Boolean> {

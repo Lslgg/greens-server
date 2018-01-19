@@ -10,9 +10,9 @@ type lcNews {
 }
 
 extend type Query{
-    # 查询所有广告
+    # 查询所有新闻
     getlcNews:[lcNews]
-    # 根据ID查找广告
+    # 根据ID查找新闻
     getlcNewsById(id:String):lcNews
     # 分页查找
     getlcNewsPage(pageIndex: Int, pageSize: Int,lcnews:searchlcNews): [lcNews]
@@ -23,9 +23,9 @@ extend type Query{
 }
 
 extend type Mutation{
-    # 添加修改广告
+    # 添加修改新闻
     savelcNews(lcnews:inputlcNews):lcNews
-    # 删除广告
+    # 删除新闻
     deletelcNews(id:String):Boolean
 }
 

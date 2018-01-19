@@ -9,9 +9,9 @@ type Type {
 }
 
 extend type Query{
-    # 查询所有广告
+    # 查询所有类别
     getType:[Type]
-    # 根据ID查找广告
+    # 根据ID查找类别
     getTypeById(id:String):Type
     # 分页查找
     getTypePage(pageIndex: Int, pageSize: Int,type:searchType): [Type]
@@ -22,9 +22,9 @@ extend type Query{
 }
 
 extend type Mutation{
-    # 添加修改广告
+    # 添加修改类别
     saveType(type:inputType):Type
-    # 删除广告
+    # 删除类别
     deleteType(id:String):Boolean
 }
 

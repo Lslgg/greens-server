@@ -9,9 +9,9 @@ type Images {
 }
 
 extend type Query{
-    # 查询所有广告
+    # 查询所有图片
     getImages:[Images]
-    # 根据ID查找广告
+    # 根据ID查找图片
     getImagesById(id:String):Images
     # 分页查找
     getImagesPage(pageIndex: Int, pageSize: Int,images:searchImages): [Images]
@@ -22,9 +22,9 @@ extend type Query{
 }
 
 extend type Mutation{
-    # 添加修改广告
+    # 添加修改图片
     saveImages(images:inputImages):Images
-    # 删除广告
+    # 删除图片
     deleteImages(id:String):Boolean
 }
 

@@ -9,7 +9,7 @@ import { GreensSchema } from "./gql-greens";
 var typeDefs = [Base];
 //系统表
 typeDefs = typeDefs.concat(SystemSchema);
-
+//聊城韭菜
 typeDefs = typeDefs.concat(GreensSchema);
 
 const schema = makeExecutableSchema({

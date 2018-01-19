@@ -11,9 +11,9 @@ type Article {
 }
 
 extend type Query{
-    # 查询所有广告
+    # 查询所有文章
     getArticle:[Article]
-    # 根据ID查找广告
+    # 根据ID查找文章
     getArticleById(id:String):Article
     # 分页查找
     getArticlePage(pageIndex: Int, pageSize: Int,article:searchArticle): [Article]
@@ -24,9 +24,9 @@ extend type Query{
 }
 
 extend type Mutation{
-    # 添加修改广告
+    # 添加修改文章
     saveArticle(article:inputArticle):Article
-    # 删除广告
+    # 删除文章
     deleteArticle(id:String):Boolean
 }
 

@@ -1,0 +1,41 @@
+# 广告
+type Product {
+   id:ID          
+   Images: [File]
+   type:String   
+   desc:String      
+   updateAt:Date
+   createAt:Date
+}
+
+extend type Query{
+    # 查询所有产品
+    getProduct:[Product]
+    # 根据ID查找产品
+    getProductById(id:String):Product
+    # 分页查找
+    getProductPage(pageIndex: Int, pageSize: Int,product:searchProduct): [Product]
+    # 查找分页总数
+    getProductCount(product:searchProduct):Int
+    # 根据条件查找
+    getProductWhere(product:searchProduct): [Product]    
+}
+
+extend type Mutation{
+    # 添加修改产品
+    saveProduct(product:inputProduct):Product
+    # 删除产品
+    deleteProduct(id:String):Boolean
+}
+
+input inputProduct{ 
+   id:String   
+   imageIds: [String]
+   type:String   
+   desc:String              
+}
+
+input searchProduct{
+    id:Json
+    type:Json    
+}
