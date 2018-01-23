@@ -3,6 +3,7 @@ import { Article } from './article/resolver';
 import { lcNews } from './lcnews/resolver';
 import { Type } from './type/resolver';
 import { Product } from './product/resolver';
+import { ContactInfo } from './contactInfo/resolver';
 
 export class GreensResolver {
     constructor() {
@@ -23,6 +24,7 @@ export class GreensResolver {
         ...lcNews.Query,
         ...Type.Query,
         ...Product.Query,
+        ...ContactInfo.Query,
     }
 
     static Mutation: any = {
@@ -31,5 +33,6 @@ export class GreensResolver {
         ...lcNews.Mutation,
         ...Type.Mutation,
         ...Product.Mutation,
+        ...ContactInfo.Mutation,
     }
 }

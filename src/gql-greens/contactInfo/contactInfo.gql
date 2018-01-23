@@ -1,0 +1,37 @@
+# 广告
+type ContactInfo {
+   id:ID          
+   webName:String
+   sPhone:String
+   cPhone1:String
+   cPhone2:String
+   webSite:String
+   updateAt:Date
+   createAt:Date
+}
+
+extend type Query{
+    # 查询所有文章
+    getContactInfo:[ContactInfo]
+    # 根据ID查找文章
+    getContactInfoById(id:String):ContactInfo    
+}
+
+extend type Mutation{
+    # 添加修改文章
+    saveContactInfo(contactInfo:inputContactInfo):ContactInfo
+    # 删除文章
+    deleteContactInfo(id:String):Boolean
+}
+
+input inputContactInfo{ 
+   id:String         
+   webName:String
+   sPhone:String
+   cPhone1:String
+   cPhone2:String
+   webSite:String
+   updateAt:Date
+   createAt:Date       
+}
+
