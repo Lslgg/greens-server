@@ -37,6 +37,5 @@ input inputImages {
 
 input searchImages{
     id:Json
-    desc:Json
     type:Json
 }

@@ -48,6 +48,7 @@ export class Images {
 
         getImagesWhere(parent, { images }, context) {
             if (!context.user) return null;
+            console.log(images);
             var imagesInfo = ImagesSchema.find(images);
             return imagesInfo;
         },
@@ -57,6 +58,7 @@ export class Images {
             var count = ImagesSchema.count(images);
             return count;
         },
+        
     }
 
     static Mutation: any = {

@@ -96,7 +96,6 @@ export class Power {
         },
         delAllPower(parent, { power }, context): Promise<Boolean> {
             if (!context.user) return null;
-
             let promise = new Promise<Boolean>((resolve, reject) => {
                 if (!power) resolve(false);
                 PowerSchema.find(power).remove((err, res) => {
