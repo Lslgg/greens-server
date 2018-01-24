@@ -1,8 +1,11 @@
 # 广告
 type ContactInfo {
-   id:ID          
+   id:ID  
+   comName1:String 
+   comName2:String   
+   sPhone:String     
    webName:String
-   sPhone:String
+   comAddress:String
    cPhone1:String
    cPhone2:String
    webSite:String
@@ -26,12 +29,13 @@ extend type Mutation{
 
 input inputContactInfo{ 
    id:String         
+   comName1:String 
+   comName2:String    
+   sPhone:String     
    webName:String
-   sPhone:String
+   comAddress:String
    cPhone1:String
    cPhone2:String
-   webSite:String
-   updateAt:Date
-   createAt:Date       
+   webSite:String   
 }
 

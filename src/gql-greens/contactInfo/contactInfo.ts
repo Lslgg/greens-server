@@ -1,23 +1,29 @@
 import { model, Schema, Document } from 'mongoose';
 
 export interface IContactInfoModel extends Document {
-    id:string         
-    webName:String
-    sPhone:String
-    cPhone1:String
-    cPhone2:String
-    webSite:String
-    updateAt:Date
-    createAt:Date    
+    id: string
+    comName1: String
+    comName2: String
+    sPhone: String
+    webName: String
+    comAddress: String
+    cPhone1: String
+    cPhone2: String
+    webSite: String
+    updateAt: Date
+    createAt: Date
 }
 
 let schema: Schema = new Schema({
     // id:string                
-    webName:String,
-    sPhone:String,
-    cPhone1:String,
-    cPhone2:String,
-    webSite:String,  
+    comName1: String,
+    comName2: String,
+    sPhone: String,
+    webName: String,
+    comAddress: String,
+    cPhone1: String,
+    cPhone2: String,
+    webSite: String,
     createAt: {
         type: Date,
         default: new Date(),
