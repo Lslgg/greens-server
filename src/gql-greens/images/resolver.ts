@@ -7,15 +7,15 @@ export class Images {
     }
 
     static Images: any = {
-		Images(model) {
-			let promise = new Promise<Array<any>>((resolve, reject) => {
-				let fm = new FileManager();
-				let imgs = fm.getFileByIds(model.imageIds);
-				resolve(imgs);
-			});
-			return promise;
-		}
-	};
+        Images(model) {
+            let promise = new Promise<Array<any>>((resolve, reject) => {
+                let fm = new FileManager();
+                let imgs = fm.getFileByIds(model.imageIds);
+                resolve(imgs);
+            });
+            return promise;
+        }
+    };
 
     static Query: any = {
         getImages(parent, { }, context): Promise<Array<IImagesModel>> {
@@ -46,10 +46,14 @@ export class Images {
             return imagesInfo;
         },
 
-        getImagesWhere(parent, { images }, context) {
+        getImagesWhere(parent, { images, limit }, context) {
             if (!context.user) return null;
-            console.log(images);
-            var imagesInfo = ImagesSchema.find(images);
+            var imagesInfo = ImagesSchema.find(images).limit(limit);
+            return imagesInfo;
+        },
+        getImagesWhereOne(parent, { images }, context) {
+            if (!context.user) return null;
+            var imagesInfo = ImagesSchema.findOne(images);
             return imagesInfo;
         },
 
@@ -58,7 +62,7 @@ export class Images {
             var count = ImagesSchema.count(images);
             return count;
         },
-        
+
     }
 
     static Mutation: any = {

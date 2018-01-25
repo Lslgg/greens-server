@@ -18,7 +18,9 @@ extend type Query{
     # 查找分页总数
     getImagesCount(images:searchImages):Int
     # 根据条件查找
-    getImagesWhere(images:searchImages): [Images]    
+    getImagesWhere(images:searchImages,limit:Int): [Images]
+    # 根据条件查找返回单个
+    getImagesWhereOne(images:searchImages): Images
 }
 
 extend type Mutation{

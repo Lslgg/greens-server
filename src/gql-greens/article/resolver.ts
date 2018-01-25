@@ -7,15 +7,15 @@ export class Article {
     }
 
     static Images: any = {
-		Images(model) {
-			let promise = new Promise<Array<any>>((resolve, reject) => {
-				let fm = new FileManager();
-				let imgs = fm.getFileByIds(model.imageIds);
-				resolve(imgs);
-			});
-			return promise;
-		}
-	};
+        Images(model) {
+            let promise = new Promise<Array<any>>((resolve, reject) => {
+                let fm = new FileManager();
+                let imgs = fm.getFileByIds(model.imageIds);
+                resolve(imgs);
+            });
+            return promise;
+        }
+    };
 
     static Query: any = {
         getArticle(parent, { }, context): Promise<Array<IArticleModel>> {
@@ -49,6 +49,11 @@ export class Article {
         getArticleWhere(parent, { article }, context) {
             if (!context.user) return null;
             var articleInfo = ArticleSchema.find(article);
+            return articleInfo;
+        },
+        getArticleWhereOne(parent, { article }, context) {
+            if (!context.user) return null;
+            var articleInfo = ArticleSchema.findOne(article);
             return articleInfo;
         },
 

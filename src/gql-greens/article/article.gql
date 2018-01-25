@@ -21,6 +21,8 @@ extend type Query{
     getArticleCount(article:searchArticle):Int
     # 根据条件查找
     getArticleWhere(article:searchArticle): [Article]    
+    # 根据条件查找 一个
+    getArticleWhereOne(article:searchArticle): Article
 }
 
 extend type Mutation{

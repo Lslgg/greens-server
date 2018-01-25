@@ -17,7 +17,7 @@ extend type Query{
     # 查询所有文章
     getContactInfo:[ContactInfo]
     # 根据ID查找文章
-    getContactInfoById(id:String):ContactInfo    
+    getContactInfoById(id:String):ContactInfo       
 }
 
 extend type Mutation{
