@@ -3,6 +3,7 @@ type lcNews {
    id:ID          
    Images: [File]
    title:String   
+   brief:String
    content:String   
    isValid:Boolean  
    updateAt:Date
@@ -19,7 +20,7 @@ extend type Query{
     # 查找分页总数
     getlcNewsCount(lcnews:searchlcNews):Int
     # 根据条件查找
-    getlcNewsWhere(lcnews:searchlcNews): [lcNews]    
+    getlcNewsWhere(lcnews:searchlcNews,limit:Int): [lcNews]    
 }
 
 extend type Mutation{
@@ -32,7 +33,8 @@ extend type Mutation{
 input inputlcNews{ 
    id:String   
    imageIds: [String]
-   title:String   
+   title:String
+   brief:String   
    content:String     
    isValid:Boolean       
 }

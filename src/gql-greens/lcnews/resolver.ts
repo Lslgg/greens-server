@@ -46,9 +46,9 @@ export class lcNews {
             return lcnewsInfo;
         },
 
-        getlcNewsWhere(parent, { lcnews }, context) {
+        getlcNewsWhere(parent, { lcnews,limit }, context) {
             if (!context.user) return null;
-            var lcnewsInfo = lcNewsSchema.find(lcnews);
+            var lcnewsInfo = lcNewsSchema.find(lcnews).limit(limit);
             return lcnewsInfo;
         },
 
