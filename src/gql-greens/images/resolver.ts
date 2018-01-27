@@ -19,7 +19,7 @@ export class Images {
 
     static Query: any = {
         getImages(parent, { }, context): Promise<Array<IImagesModel>> {
-            if (!context.user) return null;
+            
 
             let promise = new Promise<Array<IImagesModel>>((resolve, reject) => {
                 ImagesSchema.find().then(res => {
@@ -29,7 +29,7 @@ export class Images {
             return promise;
         },
         getImagesById(parent, { id }, context): Promise<IImagesModel> {
-            if (!context.user) return null;
+            
 
             let promise = new Promise<IImagesModel>((resolve, reject) => {
                 ImagesSchema.findById(id).then(res => {
@@ -40,19 +40,19 @@ export class Images {
         },
 
         getImagesPage(parent, { pageIndex = 1, pageSize = 10, images }, context) {
-            if (!context.user) return null;
+            
             var skip = (pageIndex - 1) * pageSize
             var imagesInfo = ImagesSchema.find(images).skip(skip).limit(pageSize)
             return imagesInfo;
         },
 
         getImagesWhere(parent, { images, limit }, context) {
-            if (!context.user) return null;
+            
             var imagesInfo = ImagesSchema.find(images).limit(limit);
             return imagesInfo;
         },
         getImagesWhereOne(parent, { images }, context) {
-            if (!context.user) return null;
+            
             var imagesInfo = ImagesSchema.findOne(images);
             return imagesInfo;
         },
@@ -67,7 +67,7 @@ export class Images {
 
     static Mutation: any = {
         saveImages(parent, { images }, context) {
-            if (!context.user) return null;
+            
             if (images.id && images.id != "0") {
                 return new Promise<IImagesModel>((resolve, reject) => {
                     ImagesSchema.findByIdAndUpdate(images.id, images, (err, res) => {
@@ -79,7 +79,7 @@ export class Images {
             return ImagesSchema.create(images);
         },
         deleteImages(parent, { id }, context): Promise<Boolean> {
-            if (!context.user) return null;
+            
             let promise = new Promise<Boolean>((resolve, reject) => {
                 ImagesSchema.findByIdAndRemove(id, (err, res) => {
                     resolve(res != null)

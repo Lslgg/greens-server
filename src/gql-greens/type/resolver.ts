@@ -19,7 +19,7 @@ export class Type {
 
     static Query: any = {
         getType(parent, { }, context): Promise<Array<ITypeModel>> {
-            if (!context.user) return null;
+            
 
             let promise = new Promise<Array<ITypeModel>>((resolve, reject) => {
                 TypeSchema.find().then(res => {
@@ -29,7 +29,7 @@ export class Type {
             return promise;
         },
         getTypeById(parent, { id }, context): Promise<ITypeModel> {
-            if (!context.user) return null;
+            
 
             let promise = new Promise<ITypeModel>((resolve, reject) => {
                 TypeSchema.findById(id).then(res => {
@@ -40,14 +40,14 @@ export class Type {
         },
 
         getTypePage(parent, { pageIndex = 1, pageSize = 10, type }, context) {
-            if (!context.user) return null;
+            
             var skip = (pageIndex - 1) * pageSize
             var typeInfo = TypeSchema.find(type).skip(skip).limit(pageSize)
             return typeInfo;
         },
 
         getTypeWhere(parent, { type }, context) {
-            if (!context.user) return null;
+            
             var typeInfo = TypeSchema.find(type);
             return typeInfo;
         },
@@ -61,7 +61,7 @@ export class Type {
 
     static Mutation: any = {
         saveType(parent, { type }, context) {
-            if (!context.user) return null;
+            
             type.value = type.key;
             if (type.id && type.id != "0") {
                 return new Promise<ITypeModel>((resolve, reject) => {
@@ -75,7 +75,7 @@ export class Type {
             return TypeSchema.create(type);
         },
         deleteType(parent, { id }, context): Promise<Boolean> {
-            if (!context.user) return null;
+            
             let promise = new Promise<Boolean>((resolve, reject) => {
                 TypeSchema.findByIdAndRemove(id, (err, res) => {
                     resolve(res != null)

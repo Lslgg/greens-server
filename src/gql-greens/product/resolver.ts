@@ -19,7 +19,7 @@ export class Product {
 
     static Query: any = {
         getProduct(parent, { }, context): Promise<Array<IProductModel>> {
-            if (!context.user) return null;
+            
 
             let promise = new Promise<Array<IProductModel>>((resolve, reject) => {
                 ProductSchema.find().then(res => {
@@ -29,7 +29,7 @@ export class Product {
             return promise;
         },
         getProductById(parent, { id }, context): Promise<IProductModel> {
-            if (!context.user) return null;
+            
 
             let promise = new Promise<IProductModel>((resolve, reject) => {
                 ProductSchema.findById(id).then(res => {
@@ -40,14 +40,14 @@ export class Product {
         },
 
         getProductPage(parent, { pageIndex = 1, pageSize = 10,product }, context) {
-            if (!context.user) return null;
+            
             var skip = (pageIndex - 1) * pageSize
             var productInfo = ProductSchema.find(product).skip(skip).limit(pageSize)
             return productInfo;
         },
 
         getProductWhere(parent, { product }, context) {
-            if (!context.user) return null;
+            
             var productInfo = ProductSchema.find(product);
             return productInfo;
         },
@@ -61,7 +61,7 @@ export class Product {
 
     static Mutation: any = {
         saveProduct(parent, { product }, context) {
-            if (!context.user) return null;
+            
             if (product.id && product.id != "0") {
                 return new Promise<IProductModel>((resolve, reject) => {
                     ProductSchema.findByIdAndUpdate(product.id, product, (err, res) => {
@@ -73,7 +73,7 @@ export class Product {
             return ProductSchema.create(product);
         },
         deleteProduct(parent, { id }, context): Promise<Boolean> {
-            if (!context.user) return null;
+            
             let promise = new Promise<Boolean>((resolve, reject) => {
                 ProductSchema.findByIdAndRemove(id, (err, res) => {
                     resolve(res != null)

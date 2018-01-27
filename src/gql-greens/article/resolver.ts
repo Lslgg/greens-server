@@ -19,7 +19,7 @@ export class Article {
 
     static Query: any = {
         getArticle(parent, { }, context): Promise<Array<IArticleModel>> {
-            if (!context.user) return null;
+            
 
             let promise = new Promise<Array<IArticleModel>>((resolve, reject) => {
                 ArticleSchema.find().then(res => {
@@ -29,7 +29,7 @@ export class Article {
             return promise;
         },
         getArticleById(parent, { id }, context): Promise<IArticleModel> {
-            if (!context.user) return null;
+            
 
             let promise = new Promise<IArticleModel>((resolve, reject) => {
                 ArticleSchema.findById(id).then(res => {
@@ -40,19 +40,19 @@ export class Article {
         },
 
         getArticlePage(parent, { pageIndex = 1, pageSize = 10, article }, context) {
-            if (!context.user) return null;
+            
             var skip = (pageIndex - 1) * pageSize
             var articleInfo = ArticleSchema.find(article).skip(skip).limit(pageSize)
             return articleInfo;
         },
 
         getArticleWhere(parent, { article }, context) {
-            if (!context.user) return null;
+            
             var articleInfo = ArticleSchema.find(article);
             return articleInfo;
         },
         getArticleWhereOne(parent, { article }, context) {
-            if (!context.user) return null;
+            
             var articleInfo = ArticleSchema.findOne(article);
             return articleInfo;
         },
@@ -66,7 +66,7 @@ export class Article {
 
     static Mutation: any = {
         saveArticle(parent, { article }, context) {
-            if (!context.user) return null;
+            
             if (article.id && article.id != "0") {
                 return new Promise<IArticleModel>((resolve, reject) => {
                     ArticleSchema.findByIdAndUpdate(article.id, article, (err, res) => {
@@ -78,7 +78,7 @@ export class Article {
             return ArticleSchema.create(article);
         },
         deleteArticle(parent, { id }, context): Promise<Boolean> {
-            if (!context.user) return null;
+            
             let promise = new Promise<Boolean>((resolve, reject) => {
                 ArticleSchema.findByIdAndRemove(id, (err, res) => {
                     resolve(res != null)

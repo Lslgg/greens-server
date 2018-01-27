@@ -20,7 +20,9 @@ extend type Query{
     # 查找分页总数
     getlcNewsCount(lcnews:searchlcNews):Int
     # 根据条件查找
-    getlcNewsWhere(lcnews:searchlcNews,limit:Int): [lcNews]    
+    getlcNewsWhere(lcnews:searchlcNews,limit:Int): [lcNews] 
+    # 详细新闻页面
+    # getlcNewsDetail(id:String):Json
 }
 
 extend type Mutation{

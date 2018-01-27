@@ -19,7 +19,7 @@ export class lcNews {
 
     static Query: any = {
         getlcNews(parent, { }, context): Promise<Array<IlcNewsModel>> {
-            if (!context.user) return null;
+            
 
             let promise = new Promise<Array<IlcNewsModel>>((resolve, reject) => {
                 lcNewsSchema.find().then(res => {
@@ -29,7 +29,7 @@ export class lcNews {
             return promise;
         },
         getlcNewsById(parent, { id }, context): Promise<IlcNewsModel> {
-            if (!context.user) return null;
+            
 
             let promise = new Promise<IlcNewsModel>((resolve, reject) => {
                 lcNewsSchema.findById(id).then(res => {
@@ -40,14 +40,14 @@ export class lcNews {
         },
 
         getlcNewsPage(parent, { pageIndex = 1, pageSize = 10,lcnews }, context) {
-            if (!context.user) return null;
+            
             var skip = (pageIndex - 1) * pageSize
             var lcnewsInfo = lcNewsSchema.find(lcnews).skip(skip).limit(pageSize)
             return lcnewsInfo;
         },
 
         getlcNewsWhere(parent, { lcnews,limit }, context) {
-            if (!context.user) return null;
+            
             var lcnewsInfo = lcNewsSchema.find(lcnews).limit(limit);
             return lcnewsInfo;
         },
@@ -57,11 +57,14 @@ export class lcNews {
             var count = lcNewsSchema.count(lcnews);
             return count;
         },
+        // getlcNewsDetail(parent, { id }, context) {
+
+        // }
     }
 
     static Mutation: any = {
         savelcNews(parent, { lcnews }, context) {
-            if (!context.user) return null;
+            
             if (lcnews.id && lcnews.id != "0") {
                 return new Promise<IlcNewsModel>((resolve, reject) => {
                     lcNewsSchema.findByIdAndUpdate(lcnews.id, lcnews, (err, res) => {
@@ -73,7 +76,7 @@ export class lcNews {
             return lcNewsSchema.create(lcnews);
         },
         deletelcNews(parent, { id }, context): Promise<Boolean> {
-            if (!context.user) return null;
+            
             let promise = new Promise<Boolean>((resolve, reject) => {
                 lcNewsSchema.findByIdAndRemove(id, (err, res) => {
                     resolve(res != null)
