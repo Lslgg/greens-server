@@ -22,7 +22,7 @@ extend type Query{
     # 根据条件查找
     getlcNewsWhere(lcnews:searchlcNews,limit:Int): [lcNews] 
     # 详细新闻页面
-    # getlcNewsDetail(id:String):Json
+    getlcNewsNext(id:String):lcNews
 }
 
 extend type Mutation{
@@ -42,6 +42,6 @@ input inputlcNews{
 }
 
 input searchlcNews{
-    id:Json
-    title:Json    
+    _id:Json
+    title:RegExp 
 }

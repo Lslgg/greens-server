@@ -8,7 +8,6 @@ export class ContactInfo {
 
     static Query: any = {
         getContactInfo(parent, { }, context): Promise<Array<IContactInfoModel>> {
-            
             let promise = new Promise<Array<IContactInfoModel>>((resolve, reject) => {
                 ContactInfoSchema.find().then(res => {
                     resolve(res);
@@ -17,7 +16,6 @@ export class ContactInfo {
             return promise;
         },
         getContactInfoById(parent, { id }, context): Promise<IContactInfoModel> {
-            
             let promise = new Promise<IContactInfoModel>((resolve, reject) => {
                 ContactInfoSchema.findById(id).then(res => {
                     resolve(res);
@@ -30,7 +28,7 @@ export class ContactInfo {
 
     static Mutation: any = {
         saveContactInfo(parent, { contactInfo }, context) {
-            
+
             if (contactInfo.id && contactInfo.id != "0") {
                 return new Promise<IContactInfoModel>((resolve, reject) => {
                     ContactInfoSchema.findByIdAndUpdate(contactInfo.id, contactInfo, (err, res) => {
@@ -42,7 +40,7 @@ export class ContactInfo {
             return ContactInfoSchema.create(contactInfo);
         },
         deleteContactInfo(parent, { id }, context): Promise<Boolean> {
-            
+
             let promise = new Promise<Boolean>((resolve, reject) => {
                 ContactInfoSchema.findByIdAndRemove(id, (err, res) => {
                     resolve(res != null)

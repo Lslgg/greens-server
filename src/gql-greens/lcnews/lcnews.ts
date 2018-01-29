@@ -4,20 +4,20 @@ export interface IlcNewsModel extends Document {
     id: string
     imageIds: [String]
     title: String
-    brief:String
+    brief: String
     content: String
-    isValid:Boolean
+    isValid: Boolean
     updateAt: Date
     createAt: Date
 }
 
 let schema: Schema = new Schema({
-    // id:string                
+    // id:String,             
     imageIds: [String],
     title: String,
-    brief:String,
+    brief: String,
     content: String,
-    isValid:Boolean,
+    isValid: Boolean,
     createAt: {
         type: Date,
         default: new Date(),

@@ -46,20 +46,19 @@ export class lcNews {
             return lcnewsInfo;
         },
 
-        getlcNewsWhere(parent, { lcnews,limit }, context) {
-            
-            var lcnewsInfo = lcNewsSchema.find(lcnews).limit(limit);
+        getlcNewsWhere(parent, { lcnews,limit }, context) {            
+            var lcnewsInfo = lcNewsSchema.find(lcnews).limit(limit);                        
             return lcnewsInfo;
         },
 
-        getlcNewsCount(parent, { lcnews }, context) {
+        getlcNewsCount(parent, { lcnews }, context) {            
             if (!context.user) return 0;
             var count = lcNewsSchema.count(lcnews);
             return count;
         },
-        // getlcNewsDetail(parent, { id }, context) {
+        getlcNewsNext(parent, { lcnews }, context) {
 
-        // }
+        }
     }
 
     static Mutation: any = {
