@@ -10,6 +10,7 @@ export interface IContactInfoModel extends Document {
     cPhone1: String
     cPhone2: String
     webSite: String
+    title:String
     updateAt: Date
     createAt: Date
 }
@@ -24,6 +25,7 @@ let schema: Schema = new Schema({
     cPhone1: String,
     cPhone2: String,
     webSite: String,
+    title:String,
     createAt: {
         type: Date,
         default: new Date(),

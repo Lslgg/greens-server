@@ -9,6 +9,7 @@ type ContactInfo {
    cPhone1:String
    cPhone2:String
    webSite:String
+   title:String
    updateAt:Date
    createAt:Date
 }
@@ -36,6 +37,7 @@ input inputContactInfo{
    comAddress:String
    cPhone1:String
    cPhone2:String
+   title:String
    webSite:String   
 }
 
