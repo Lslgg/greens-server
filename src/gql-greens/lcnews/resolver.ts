@@ -39,8 +39,7 @@ export class lcNews {
             return promise;
         },
 
-        getlcNewsPage(parent, { pageIndex = 1, pageSize = 10,lcnews }, context) {
-            
+        getlcNewsPage(parent, { pageIndex = 1, pageSize = 10,lcnews }, context) {            
             var skip = (pageIndex - 1) * pageSize
             var lcnewsInfo = lcNewsSchema.find(lcnews).skip(skip).limit(pageSize)
             return lcnewsInfo;
@@ -52,7 +51,6 @@ export class lcNews {
         },
 
         getlcNewsCount(parent, { lcnews }, context) {            
-            if (!context.user) return 0;
             var count = lcNewsSchema.count(lcnews);
             return count;
         },

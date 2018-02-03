@@ -37,8 +37,8 @@ input inputArticle{
    imageIds: [String]
    type:String
    desc:String
-   content:String  
-   isValid:Boolean         
+   content:String 
+   isValid:Boolean       
 }
 
 input searchArticle{
