@@ -61,7 +61,7 @@ export default new GraphQLScalarType({
 
         if (ast.kind === Kind.STRING ||
             ast.kind === Kind.INT || ast.kind === Kind.BOOLEAN) {
-            console.log(ast.value)
+            // console.log(ast.value)
             return ast.value;
         }
     }

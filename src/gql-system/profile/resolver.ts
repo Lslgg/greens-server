@@ -42,7 +42,7 @@ export class Profile {
 
         getProfileWhere(parent, { profile }, context) {
             if(!context.user) return 0;
-            console.log(profile);
+            // console.log(profile);
             var proFiles = ProfileSchema.find(profile);
             return proFiles;
         },
@@ -60,7 +60,7 @@ export class Profile {
                 ProfileSchema.aggregate([profile]
                 ).then(data => resolve(data))
                     .catch(err => {
-                        console.error(err);
+                        // console.error(err);
                         reject(err);
                     });
             })

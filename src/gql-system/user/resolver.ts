@@ -51,7 +51,7 @@ export class User {
 
         getUserWhere(parent, { user }, context) {
             if (!context.user) return null;
-            console.log(user);
+            // console.log(user);
             var users = UserSchema.find(user);
             return users;
         },

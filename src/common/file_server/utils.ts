@@ -20,7 +20,7 @@ const loadCollection = function (colName, db: Loki): Promise<LokiCollection<any>
 
 const cleanFolder = function (folderPath,fileName) {
     // delete files inside folder but not the folder itself
-    console.log([`${folderPath}/${fileName}`, `!${folderPath}`]);
+    // console.log([`${folderPath}/${fileName}`, `!${folderPath}`]);
     del.sync([`${folderPath}/${fileName}`, `!${folderPath}`]);
 };
 
