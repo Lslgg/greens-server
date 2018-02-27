@@ -100,7 +100,9 @@ class Server {
 			origin: [
 				 "http://localhost:4200",
 				 "http://localhost:3000",
-				 "http://localhost:8083"
+				 "http://localhost:8083",
+				 "http://www.lianheqianjin.com",
+				 "http://108.161.189.121:443"				 
 			],
 			headers: [
 				"Access-Control-Allow-Origin",

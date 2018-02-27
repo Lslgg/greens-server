@@ -1,5 +1,3 @@
-
-
 var requireText = require('require-text');
 var Images = requireText('./images/images.gql', require);
 var Article = requireText('./article/article.gql', require);
@@ -8,6 +6,7 @@ var Type = requireText('./type/type.gql', require);
 var Product = requireText('./product/product.gql', require);
 var ContactInfo = requireText('./contactInfo/contactInfo.gql', require);
 var Menul = requireText('./menul/menul.gql', require);
+var Garden = requireText('./garden/garden.gql', require);
 
 export const GreensSchema = [
     Images,
@@ -16,5 +15,6 @@ export const GreensSchema = [
     Type,
     Product,
     ContactInfo,
-    Menul
+    Menul,
+    Garden,
 ];
