@@ -6,8 +6,8 @@ export interface IlcNewsModel extends Document {
     title: String
     brief: String
     content: String
-    isValid: Boolean
     updateAt: Date
+    isValid:Boolean
     createAt: Date
 }
 
@@ -17,7 +17,7 @@ let schema: Schema = new Schema({
     title: String,
     brief: String,
     content: String,
-    isValid: Boolean,
+    isValid:Boolean,
     createAt: {
         type: Date,
         default: new Date(),

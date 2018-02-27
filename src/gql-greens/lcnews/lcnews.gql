@@ -4,7 +4,7 @@ type lcNews {
    Images: [File]
    title:String   
    brief:String
-   content:String   
+   content:String  
    isValid:Boolean  
    updateAt:Date
    createAt:Date
@@ -37,8 +37,8 @@ input inputlcNews{
    imageIds: [String]
    title:String
    brief:String   
-   content:String     
-   isValid:Boolean       
+   content:String  
+   isValid:Boolean      
 }
 
 input searchlcNews{

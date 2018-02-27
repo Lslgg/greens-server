@@ -6,7 +6,7 @@ export interface IArticleModel extends Document {
     type: String
     desc: String
     content:String
-    isValid:Boolean  
+    isValid:Boolean
     updateAt: Date
     createAt: Date
 }
@@ -16,7 +16,7 @@ let schema: Schema = new Schema({
     imageIds: [String],
     type: String,
     desc: String,
-    content:String  ,
+    content:String,
     isValid:Boolean,
     createAt: {
         type: Date,

@@ -15,7 +15,9 @@ typeDefs = typeDefs.concat(GreensSchema);
 const schema = makeExecutableSchema({
   typeDefs: typeDefs,
   resolvers: resolvers,
-  logger: { log: e => console.log(e) }
+  logger: { log: e => {
+    // console.log(e)
+  } }
 })
 
 
