@@ -50,12 +50,7 @@ export class lcNews {
             return lcnewsInfo;
         },
 
-<<<<<<< HEAD
         getlcNewsCount(parent, { lcnews }, context) {                        
-=======
-        getlcNewsCount(parent, { lcnews }, context) {            
-            // console.log(lcnews);
->>>>>>> 117dc422567bc911edb46d2d06627e56f701d2d8
             var count = lcNewsSchema.count(lcnews);
             return count;
         },
