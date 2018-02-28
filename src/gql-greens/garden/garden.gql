@@ -1,0 +1,42 @@
+# 广告
+type Garden {
+   id:ID          
+   Images: [File]
+   title:String
+   brief:String
+   updateAt:Date
+   createAt:Date
+}
+
+extend type Query{
+    # 查询所有文章
+    getGarden:[Garden]
+    # 根据ID查找文章
+    getGardenById(id:String):Garden
+    # 分页查找
+    getGardenPage(pageIndex: Int, pageSize: Int,garden:searchGarden): [Garden]
+    # 查找分页总数
+    getGardenCount(garden:searchGarden):Int
+    # 根据条件查找
+    getGardenWhere(garden:searchGarden): [Garden]    
+    # 根据条件查找 一个
+    getGardenWhereOne(garden:searchGarden): Garden
+}
+
+extend type Mutation{
+    # 添加修改文章
+    saveGarden(garden:inputGarden):Garden
+    # 删除文章
+    deleteGarden(id:String):Boolean
+}
+
+input inputGarden{ 
+   id:String   
+   imageIds: [String]
+   title:String
+   brief:String
+}
+
+input searchGarden{
+    id:Json    
+}

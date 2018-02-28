@@ -1,12 +1,10 @@
 import { model, Schema, Document } from 'mongoose';
 
-export interface IArticleModel extends Document {
-    id: string    
+export interface IGardenModel extends Document {
+    id: string
     imageIds: [String]
-    type: String
-    desc: String
-    content:String
-    isValid:Boolean  
+    title:String
+    brief: String
     updateAt: Date
     createAt: Date
 }
@@ -14,10 +12,8 @@ export interface IArticleModel extends Document {
 let schema: Schema = new Schema({
     // id:string            
     imageIds: [String],
-    type: String,
-    desc: String,
-    content:String  ,
-    isValid:Boolean,
+    title:String,
+    brief: String,
     createAt: {
         type: Date,
         default: new Date(),
@@ -30,4 +26,4 @@ let schema: Schema = new Schema({
     },
 })
 
-export default model<IArticleModel>('Article', schema);
+export default model<IGardenModel>('Garden', schema);

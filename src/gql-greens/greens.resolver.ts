@@ -5,6 +5,7 @@ import { Type } from './type/resolver';
 import { Product } from './product/resolver';
 import { ContactInfo } from './contactInfo/resolver'
 import { Menul } from './menul/resolver'
+import { Garden } from './garden/resolver'
 
 export class GreensResolver {
     constructor() {
@@ -16,6 +17,7 @@ export class GreensResolver {
         Images: Images.Images,
         lcNews: lcNews.Images,
         Product: Product.Images,
+        Garden: Garden.Images,
     }
 
 
@@ -27,6 +29,7 @@ export class GreensResolver {
         ...Product.Query,
         ...ContactInfo.Query,
         ...Menul.Query,
+        ...Garden.Query,
     }
 
     static Mutation: any = {
@@ -37,5 +40,6 @@ export class GreensResolver {
         ...Product.Mutation,
         ...ContactInfo.Mutation,
         ...Menul.Mutation,
+        ...Garden.Mutation,
     }
 }

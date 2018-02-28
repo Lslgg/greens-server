@@ -19,8 +19,6 @@ export class Article {
 
     static Query: any = {
         getArticle(parent, { }, context): Promise<Array<IArticleModel>> {
-            
-
             let promise = new Promise<Array<IArticleModel>>((resolve, reject) => {
                 ArticleSchema.find().then(res => {
                     resolve(res);
