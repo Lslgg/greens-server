@@ -1,5 +1,3 @@
-
-
 var requireText = require('require-text');
 var Images = requireText('./images/images.gql', require);
 var Article = requireText('./article/article.gql', require);
@@ -18,5 +16,9 @@ export const GreensSchema = [
     Product,
     ContactInfo,
     Menul,
+<<<<<<< HEAD
     Garden
+=======
+    Garden,
+>>>>>>> 3d7935095cadf1d86de64481133acb688acb2f9e
 ];
