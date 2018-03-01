@@ -102,6 +102,7 @@ class Server {
 				 "http://localhost:3000",
 				 "http://localhost:8083",
 				 "http://www.lianheqianjin.com",
+				 "http://211.149.219.127:80",				 
 				 "http://108.161.189.121:443"				 
 			],
 			headers: [

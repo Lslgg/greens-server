@@ -1,0 +1,47 @@
+# 广告
+type lcNews {
+   id:ID          
+   Images: [File]
+   title:String   
+   brief:String
+   content:String  
+   isValid:Boolean  
+   updateAt:Date
+   createAt:Date
+}
+
+extend type Query{
+    # 查询所有新闻
+    getlcNews:[lcNews]
+    # 根据ID查找新闻
+    getlcNewsById(id:String):lcNews
+    # 分页查找
+    getlcNewsPage(pageIndex: Int, pageSize: Int,lcnews:searchlcNews): [lcNews]
+    # 查找分页总数
+    getlcNewsCount(lcnews:searchlcNews):Int
+    # 根据条件查找
+    getlcNewsWhere(lcnews:searchlcNews,limit:Int): [lcNews] 
+    # 详细新闻页面
+    getlcNewsNext(id:String):lcNews
+}
+
+extend type Mutation{
+    # 添加修改新闻
+    savelcNews(lcnews:inputlcNews):lcNews
+    # 删除新闻
+    deletelcNews(id:String):Boolean
+}
+
+input inputlcNews{ 
+   id:String   
+   imageIds: [String]
+   title:String
+   brief:String   
+   content:String  
+   isValid:Boolean      
+}
+
+input searchlcNews{
+    _id:Json
+    title:RegExp 
+}

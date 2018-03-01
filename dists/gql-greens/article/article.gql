@@ -43,6 +43,6 @@ input inputArticle{
 
 input searchArticle{
     id:Json
-    desc:RegExp
+    desc:Json
     type:Json
 }

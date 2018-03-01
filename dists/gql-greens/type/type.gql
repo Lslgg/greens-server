@@ -37,7 +37,7 @@ input inputType{
 
 input searchType{
     id:Json
-    key:RegExp
+    key:Json
     value:Json
     type:Json
 }

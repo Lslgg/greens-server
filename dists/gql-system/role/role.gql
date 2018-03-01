@@ -1,0 +1,64 @@
+# 系统角色表
+type Role {
+    id: ID!
+	# 角色名
+	roleName: String
+	# 说明
+	desc: String
+	code:String
+	# 是否用效
+	isValid: Boolean
+	# 创建时期
+	createAt: Date
+	# 修改时期
+	updateAt: Date
+	# 权限
+	Powers(limit: Int = 100): [Power]
+}
+
+extend type Query {
+	# 查找所有角色
+	getRoles: [Role]
+	# 根据ID查找角色
+	getRoleById(id: String): Role
+	# 分页查找角色
+	getRolePage(pageIndex: Int, pageSize: Int, role: searchRole): [Role]
+	# 查找分页角色总数
+	getRoleCount(role: searchRole): Int
+	# 根据条件查找角色
+	getRoleWhere(role: searchRole): [Role]
+}
+
+extend type Mutation {
+	# 创建角色|修改角色
+	saveRole(role: inputRole): Role
+	# 删除角色
+	deleteRole(id: String): Boolean
+	# 添加角色权限
+	addRolePower(rolePower: inputRolePower): Role
+	# 根据角色删除角色权限
+	delPowerbyRoleId(roleId: String): Boolean
+	# 根据角色权限管理表ID删除权限 
+	delPowerbyId(id: String): Boolean
+	# 根据角色权限管理表权限Id批量删除权限
+	delAllPowerbyId(roleId:String,id: [String]): Boolean
+	# 批量添加角色权限
+	addAllRolePower(rolePower: [inputRolePower]): Role
+}
+
+input inputRole {
+	id:String
+	roleName: String
+	desc: String
+	code:String
+	isValid: Boolean
+}
+
+input inputRolePower {
+	roleId: String
+	powerId: String
+}
+
+input searchRole {
+	roleName: Json
+}
