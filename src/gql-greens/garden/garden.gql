@@ -39,4 +39,6 @@ input inputGarden{
 
 input searchGarden{
     id:Json    
+    # title:RegExp
+    title:Json
 }
