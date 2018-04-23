@@ -40,4 +40,5 @@ input inputImages {
 input searchImages{
     id:Json
     type:Json
+    desc:RegExp
 }
