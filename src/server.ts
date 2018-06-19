@@ -73,7 +73,7 @@ class Server {
 
 	//设置mongodb初始化
 	private setMongodbInit() {
-		const MONGO_URI = 'mongodb://localhost/webSite';
+		const MONGO_URI = 'mongodb://localhost/LCWebSite';
 		Mongoose.connect(MONGO_URI || process.env.MONGO_URI);
 		this.app.use(bodyParser.urlencoded({ extended: false }));
 		this.app.use(bodyParser.json());
@@ -118,19 +118,6 @@ class Server {
 		);
 	}
 
-	//graphql apollo engine
-	// private setEngine() {
-	// 	this.app.use(compression());
-	// 	const engine = new Engine({
-	// 		engineConfig: path.join(__dirname, './engineConfig.json'),
-	// 		graphqlPort: 8080,
-	// 		endpoint: '/graphql',
-	// 		dumpTraffic: true
-	// 	});
-	// 	engine.start();
-	// 	this.app.use(engine.expressMiddleware());
-	// }
-
 	//设置跨域
 	private setCors() {
 		var corsOption = {
@@ -147,6 +134,19 @@ class Server {
 		}
 		this.app.use(cors(corsOption));
 	}
+
+	//graphql apollo engine
+	// private setEngine() {
+	// 	this.app.use(compression());
+	// 	const engine = new Engine({
+	// 		engineConfig: path.join(__dirname, './engineConfig.json'),
+	// 		graphqlPort: 8080,
+	// 		endpoint: '/graphql',
+	// 		dumpTraffic: true
+	// 	});
+	// 	engine.start();
+	// 	this.app.use(engine.expressMiddleware());
+	// }
 }
 
 export default new Server().app;
